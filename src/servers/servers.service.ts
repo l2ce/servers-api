@@ -13,8 +13,6 @@ export class ServersService {
     private serverModel:Model<ServerDocument>
   ) {}
 
-  private servers = []
-
   async getAll():Promise<Server[]> {
     return this.serverModel.find().exec()
   }
