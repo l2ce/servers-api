@@ -6,13 +6,13 @@ export type ServerDocument = Server & Document
 @Schema()
 export class Server {
 
-  @Prop()
-  name: string
+  @Prop({default: null})
+  name: string|null
 
-  @Prop()
-  url: string
+  @Prop({default: null})
+  url: string|null
   
-  @Prop()
+  @Prop({default: 0})
   rating: number
 }
 
