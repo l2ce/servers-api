@@ -27,7 +27,7 @@ export class ProjectsController {
   @Post()
   @ApiOperation({ summary: 'Добавить новый проект' })
   @ApiResponse({ status: 200, type: ResponseProjectDto })
-  create(@Body('data') server: ProjectDto):Promise<IProject> {
+  create(@Body() server: ProjectDto):Promise<IProject> {
     return this.projectsService.create(server)
   }
 

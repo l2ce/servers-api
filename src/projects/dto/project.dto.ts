@@ -1,13 +1,13 @@
 import { ApiProperty } from "@nestjs/swagger";
 
 export class ProjectDto {
-  @ApiProperty({ example: 'Asterios', description: 'Имя сервера' })
-  readonly name: string
+  @ApiProperty({ example: 'Asterios', description: 'Имя сервера', required: false })
+  readonly name: string|null
   
-  @ApiProperty({ example: 'https://asterios.tm/', description: 'url адресс' })
+  @ApiProperty({ example: 'https://asterios.tm/', description: 'url адресс', required: false })
   readonly url: string
 
-  @ApiProperty({ example: '10', description: 'Рейтинг сервера' })
+  @ApiProperty({ example: 10, description: 'Рейтинг сервера', required: false })
   readonly rating: number
 }
 

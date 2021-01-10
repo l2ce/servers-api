@@ -29,7 +29,7 @@ export class ServersController {
   @Post()
   @ApiOperation({ summary: 'Добавить новый сервер' })
   @ApiResponse({ status: 200, type: ResponseServerDto })
-  create(@Body('data') server: ServerDto):Promise<IServer> {
+  create(@Body() server: ServerDto):Promise<IServer> {
     return this.serversService.create(server)
   }
 
