@@ -1,38 +1,36 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { CreateServerDto } from './dto/create-server.dto';
-import { UpdateServerDto } from './dto/update-server.dto';
-import { Server, ServerDocument } from './schemas/servers.schema';
+import { ServerDto } from './dto/server.dto';
+import { IServer } from './interface/server.interface';
+import { Server } from './schemas/servers.schema';
 
 @Injectable()
 export class ServersService {
 
   constructor(
     @InjectModel(Server.name) 
-    private serverModel:Model<ServerDocument>
+    private serverModel:Model<IServer>
   ) {}
 
-  private servers = []
-
-  async getAll():Promise<Server[]> {
+  async getAll() {
     return this.serverModel.find().exec()
   }
 
-  async getById(id: string):Promise<Server> {
+  async getById(id: string):Promise<IServer> {
     return this.serverModel.findById(id)
   }
 
-  async create(server: CreateServerDto):Promise<Server> {
+  async create(server: ServerDto):Promise<IServer> {
     const newServer = new this.serverModel(server)
     return newServer.save()
   }
 
-  async remove(id: string):Promise<Server> {
+  async remove(id: string):Promise<IServer> {
     return this.serverModel.findByIdAndRemove(id)
   }
 
-  async update(id:string, server: UpdateServerDto):Promise<Server> {
+  async update(id:string, server: ServerDto):Promise<IServer> {
     return this.serverModel.findByIdAndUpdate(id, server, { new: true })
   }
 }
