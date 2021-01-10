@@ -15,6 +15,12 @@ export class Project {
   
   @Prop({default: 0})
   rating: number
+
+  @Prop({default: 0})
+  dateStart: Date
+
+  @Prop({default: 0})
+  dateEnd: Date
 }
 
 export const ProjectSchema = SchemaFactory.createForClass(Project)
