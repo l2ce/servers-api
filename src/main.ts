@@ -1,6 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
+import config from './config/configuration'
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -9,9 +10,11 @@ async function bootstrap() {
     .setTitle('L2ce servers-api')
     .setDescription('')
     .setVersion('1.0')
-    .build();
+    .addServer(config().swagger.host)
+    .build()
+
   const document = SwaggerModule.createDocument(app, options);
-  SwaggerModule.setup('api', app, document);
+  SwaggerModule.setup('swagger', app, document);
   await app.listen(3000);
 }
 bootstrap();
