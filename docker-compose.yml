@@ -4,6 +4,11 @@ networks:
 services:
   client:
     image: ghcr.io/l2ce/servers-api:latest
+    # environment:
+    #   MYSQL_ROOT_PASSWORD: secret
+    #   MYSQL_DATABASE: dnrdev
+    #   MYSQL_USER: dnrdev
+    #   MYSQL_PASSWORD: dnrdev
     ports:
       - 3000:3000
     networks:
